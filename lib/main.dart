@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,19 +23,45 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
   final String title;
 
   @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  late Future response;
+
+  @override
+  void initState() {
+    super.initState();
+    response = Future(() async => jsonDecode(await rootBundle.loadString('json/info.json')));
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final bodyWidget = FutureBuilder(
+      future: response,
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return const Text('Error');
+        } else if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Text("Waiting");
+        } else {
+          return Text((snapshot.data).toString());
+        }
+      },
+    );
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(title),
+        title: Text(widget.title),
       ),
-      body: Container(),
+      body: bodyWidget,
     );
   }
 }
