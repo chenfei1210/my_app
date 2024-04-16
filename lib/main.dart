@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:my_app/infrastructure/model/card_item.dart';
+import 'package:my_app/infrastructure/model/info.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,12 +35,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  late Future response;
+  late Future<Info> response;
 
   @override
   void initState() {
     super.initState();
-    response = Future(() async => jsonDecode(await rootBundle.loadString('json/info.json')));
+    response = Future(() async => Info.fromJson(jsonDecode(await rootBundle.loadString('json/info.json'))));
   }
 
   @override
@@ -51,7 +53,8 @@ class _MyHomePageState extends State<MyHomePage> {
         } else if (snapshot.connectionState == ConnectionState.waiting) {
           return const Text("Waiting");
         } else {
-          return Text((snapshot.data).toString());
+          final CardItem testCardInfo = (snapshot.data as Info).cardList.first;
+          return Text(testCardInfo.toString());
         }
       },
     );
