@@ -13,7 +13,8 @@ class IntToCardBrandConverter implements JsonConverter<CardBrand, int> {
 }
 
 /// int -> CardClassification 変換用 JsonConverter
-class IntToCardClassificationConverter implements JsonConverter<CardClassification, int> {
+class IntToCardClassificationConverter
+    implements JsonConverter<CardClassification, int> {
   const IntToCardClassificationConverter();
 
   @override
@@ -24,7 +25,8 @@ class IntToCardClassificationConverter implements JsonConverter<CardClassificati
 }
 
 /// String -> EffectiveDate 変換用 JsonConverter
-class StringToEffectiveDateConverter implements JsonConverter<EffectiveDate, String> {
+class StringToEffectiveDateConverter
+    implements JsonConverter<EffectiveDate, String> {
   const StringToEffectiveDateConverter();
 
   @override
@@ -32,6 +34,18 @@ class StringToEffectiveDateConverter implements JsonConverter<EffectiveDate, Str
 
   @override
   String toJson(EffectiveDate effectiveDate) => effectiveDate.toString();
+}
+
+/// Int -> CurrencyVolume 変換用 JsonConverter
+class IntToCurrencyVolumeConverter
+    implements JsonConverter<CurrencyVolume, int> {
+  const IntToCurrencyVolumeConverter();
+
+  @override
+  CurrencyVolume fromJson(int json) => CurrencyVolume(json);
+
+  @override
+  int toJson(CurrencyVolume currencyVolume) => currencyVolume.volume;
 }
 
 /// String -> DateTime 変換用 JsonConverter

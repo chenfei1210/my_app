@@ -51,13 +51,18 @@ mixin _$CardItem {
   String get cardVerificationValue => throw _privateConstructorUsedError;
 
   /// ショッピング利用可能枠
-  String get availableShoppingLimit => throw _privateConstructorUsedError;
+  @IntToCurrencyVolumeConverter()
+  CurrencyVolume get availableShoppingLimit =>
+      throw _privateConstructorUsedError;
 
   /// キャッシング利用可能枠
-  String get availableCashAdvanceLimit => throw _privateConstructorUsedError;
+  @IntToCurrencyVolumeConverter()
+  CurrencyVolume get availableCashAdvanceLimit =>
+      throw _privateConstructorUsedError;
 
   /// 年会費
-  String get annualFee => throw _privateConstructorUsedError;
+  @IntToCurrencyVolumeConverter()
+  CurrencyVolume get annualFee => throw _privateConstructorUsedError;
 
   /// 返済口座
   String get repaymentAccount => throw _privateConstructorUsedError;
@@ -83,9 +88,9 @@ abstract class $CardItemCopyWith<$Res> {
       String cardHolder,
       String passcode,
       String cardVerificationValue,
-      String availableShoppingLimit,
-      String availableCashAdvanceLimit,
-      String annualFee,
+      @IntToCurrencyVolumeConverter() CurrencyVolume availableShoppingLimit,
+      @IntToCurrencyVolumeConverter() CurrencyVolume availableCashAdvanceLimit,
+      @IntToCurrencyVolumeConverter() CurrencyVolume annualFee,
       String repaymentAccount});
 }
 
@@ -156,15 +161,15 @@ class _$CardItemCopyWithImpl<$Res, $Val extends CardItem>
       availableShoppingLimit: null == availableShoppingLimit
           ? _value.availableShoppingLimit
           : availableShoppingLimit // ignore: cast_nullable_to_non_nullable
-              as String,
+              as CurrencyVolume,
       availableCashAdvanceLimit: null == availableCashAdvanceLimit
           ? _value.availableCashAdvanceLimit
           : availableCashAdvanceLimit // ignore: cast_nullable_to_non_nullable
-              as String,
+              as CurrencyVolume,
       annualFee: null == annualFee
           ? _value.annualFee
           : annualFee // ignore: cast_nullable_to_non_nullable
-              as String,
+              as CurrencyVolume,
       repaymentAccount: null == repaymentAccount
           ? _value.repaymentAccount
           : repaymentAccount // ignore: cast_nullable_to_non_nullable
@@ -191,9 +196,9 @@ abstract class _$$CardItemImplCopyWith<$Res>
       String cardHolder,
       String passcode,
       String cardVerificationValue,
-      String availableShoppingLimit,
-      String availableCashAdvanceLimit,
-      String annualFee,
+      @IntToCurrencyVolumeConverter() CurrencyVolume availableShoppingLimit,
+      @IntToCurrencyVolumeConverter() CurrencyVolume availableCashAdvanceLimit,
+      @IntToCurrencyVolumeConverter() CurrencyVolume annualFee,
       String repaymentAccount});
 }
 
@@ -262,15 +267,15 @@ class __$$CardItemImplCopyWithImpl<$Res>
       availableShoppingLimit: null == availableShoppingLimit
           ? _value.availableShoppingLimit
           : availableShoppingLimit // ignore: cast_nullable_to_non_nullable
-              as String,
+              as CurrencyVolume,
       availableCashAdvanceLimit: null == availableCashAdvanceLimit
           ? _value.availableCashAdvanceLimit
           : availableCashAdvanceLimit // ignore: cast_nullable_to_non_nullable
-              as String,
+              as CurrencyVolume,
       annualFee: null == annualFee
           ? _value.annualFee
           : annualFee // ignore: cast_nullable_to_non_nullable
-              as String,
+              as CurrencyVolume,
       repaymentAccount: null == repaymentAccount
           ? _value.repaymentAccount
           : repaymentAccount // ignore: cast_nullable_to_non_nullable
@@ -295,9 +300,11 @@ class _$CardItemImpl implements _CardItem {
       this.cardHolder = '',
       this.passcode = '',
       this.cardVerificationValue = '',
-      this.availableShoppingLimit = '',
-      this.availableCashAdvanceLimit = '',
-      this.annualFee = '',
+      @IntToCurrencyVolumeConverter()
+      this.availableShoppingLimit = const CurrencyVolume(0),
+      @IntToCurrencyVolumeConverter()
+      this.availableCashAdvanceLimit = const CurrencyVolume(0),
+      @IntToCurrencyVolumeConverter() this.annualFee = const CurrencyVolume(0),
       this.repaymentAccount = ''});
 
   factory _$CardItemImpl.fromJson(Map<String, dynamic> json) =>
@@ -354,17 +361,20 @@ class _$CardItemImpl implements _CardItem {
   /// ショッピング利用可能枠
   @override
   @JsonKey()
-  final String availableShoppingLimit;
+  @IntToCurrencyVolumeConverter()
+  final CurrencyVolume availableShoppingLimit;
 
   /// キャッシング利用可能枠
   @override
   @JsonKey()
-  final String availableCashAdvanceLimit;
+  @IntToCurrencyVolumeConverter()
+  final CurrencyVolume availableCashAdvanceLimit;
 
   /// 年会費
   @override
   @JsonKey()
-  final String annualFee;
+  @IntToCurrencyVolumeConverter()
+  final CurrencyVolume annualFee;
 
   /// 返済口座
   @override
@@ -452,9 +462,11 @@ abstract class _CardItem implements CardItem {
       final String cardHolder,
       final String passcode,
       final String cardVerificationValue,
-      final String availableShoppingLimit,
-      final String availableCashAdvanceLimit,
-      final String annualFee,
+      @IntToCurrencyVolumeConverter()
+      final CurrencyVolume availableShoppingLimit,
+      @IntToCurrencyVolumeConverter()
+      final CurrencyVolume availableCashAdvanceLimit,
+      @IntToCurrencyVolumeConverter() final CurrencyVolume annualFee,
       final String repaymentAccount}) = _$CardItemImpl;
 
   factory _CardItem.fromJson(Map<String, dynamic> json) =
@@ -502,15 +514,18 @@ abstract class _CardItem implements CardItem {
   @override
 
   /// ショッピング利用可能枠
-  String get availableShoppingLimit;
+  @IntToCurrencyVolumeConverter()
+  CurrencyVolume get availableShoppingLimit;
   @override
 
   /// キャッシング利用可能枠
-  String get availableCashAdvanceLimit;
+  @IntToCurrencyVolumeConverter()
+  CurrencyVolume get availableCashAdvanceLimit;
   @override
 
   /// 年会費
-  String get annualFee;
+  @IntToCurrencyVolumeConverter()
+  CurrencyVolume get annualFee;
   @override
 
   /// 返済口座

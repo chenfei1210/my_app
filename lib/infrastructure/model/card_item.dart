@@ -20,7 +20,9 @@ class CardItem with _$CardItem {
     @Default(CardBrand.other) @IntToCardBrandConverter() final CardBrand brand,
 
     /// カード区分
-    @Default(CardClassification.other) @IntToCardClassificationConverter() final CardClassification classification,
+    @Default(CardClassification.other)
+    @IntToCardClassificationConverter()
+    final CardClassification classification,
 
     /// カード番号
     @Default('') final String number,
@@ -40,19 +42,26 @@ class CardItem with _$CardItem {
     @Default('') final String cardVerificationValue,
 
     /// ショッピング利用可能枠
-    @Default('') final String availableShoppingLimit,
+    @Default(CurrencyVolume(0))
+    @IntToCurrencyVolumeConverter()
+    final CurrencyVolume availableShoppingLimit,
 
     /// キャッシング利用可能枠
-    @Default('') final String availableCashAdvanceLimit,
+    @Default(CurrencyVolume(0))
+    @IntToCurrencyVolumeConverter()
+    final CurrencyVolume availableCashAdvanceLimit,
 
     /// 年会費
-    @Default('') final String annualFee,
+    @Default(CurrencyVolume(0))
+    @IntToCurrencyVolumeConverter()
+    final CurrencyVolume annualFee,
 
     /// 返済口座
     @Default('') final String repaymentAccount,
   }) = _CardItem;
 
-  factory CardItem.fromJson(Map<String, dynamic> json) => _$CardItemFromJson(json);
+  factory CardItem.fromJson(Map<String, dynamic> json) =>
+      _$CardItemFromJson(json);
 }
 
 enum CardBrand {
@@ -82,9 +91,9 @@ enum CardBrand {
 }
 
 enum CardClassification {
-  credit(0, 'クレジットカード'),
-  debit(1, 'デビットカード'),
-  prepaid(2, 'プリペイドカード'),
+  credit(0, 'クレジット'),
+  debit(1, 'デビット'),
+  prepaid(2, 'プリペイド'),
   other(9999, 'other'),
   ;
 
@@ -96,7 +105,8 @@ enum CardClassification {
   final int value;
   final String name;
 
-  static CardClassification fromValue(int value) => CardClassification.values.firstWhere(
+  static CardClassification fromValue(int value) =>
+      CardClassification.values.firstWhere(
         (cardClassification) => cardClassification.value == value,
         orElse: () => CardClassification.other,
       );
@@ -119,4 +129,13 @@ class EffectiveDate {
 
   @override
   String toString() => '$month/$year';
+}
+
+class CurrencyVolume {
+  const CurrencyVolume(this.volume);
+
+  final int volume;
+
+  @override
+  String toString() => volume >= 10000 ? '${volume / 10000} 万' : '$volume 万';
 }

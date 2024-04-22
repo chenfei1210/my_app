@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:my_app/infrastructure/model/card_item.dart';
 import 'package:my_app/infrastructure/model/info.dart';
+import 'package:my_app/presentation/card/custom_card.dart';
+import 'package:oktoast/oktoast.dart';
 
 void main() {
+  // debugPaintSizeEnabled = true;
   runApp(const MyApp());
 }
 
@@ -14,13 +17,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return OKToast(
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: const MyHomePage(title: 'Flutter Demo Home Page'),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -40,7 +45,13 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    response = Future(() async => Info.fromJson(jsonDecode(await rootBundle.loadString('json/info.json'))));
+    response = Future(
+      () async => Info.fromJson(
+        jsonDecode(
+          await rootBundle.loadString('json/info.json'),
+        ),
+      ),
+    );
   }
 
   @override
@@ -53,8 +64,13 @@ class _MyHomePageState extends State<MyHomePage> {
         } else if (snapshot.connectionState == ConnectionState.waiting) {
           return const Text("Waiting");
         } else {
-          final CardItem testCardInfo = (snapshot.data as Info).cardList.first;
-          return Text(testCardInfo.toString());
+          final CardItem testCardInfo = (snapshot.data as Info).cardList[1];
+          return Center(
+            child: SizedBox(
+              width: 400,
+              child: CustomCard(cardItem: testCardInfo),
+            ),
+          );
         }
       },
     );

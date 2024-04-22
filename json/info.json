@@ -5,14 +5,14 @@
             "issuing_company": "発行企業",
             "brand": 0,
             "classification": 0,
-            "number": "1111222233334444",
+            "number": "1111 2222 3333 4444",
             "effective_date": "01/01",
             "card_holder": "FEI CHEN",
             "passcode": "1234",
             "card_verification_value": "123",
-            "available_shopping_limit": "1000000",
-            "available_cash_advance_limit": "200000",
-            "annual_fee": "10000",
+            "available_shopping_limit": 1000000,
+            "available_cash_advance_limit": 200000,
+            "annual_fee": 10000,
             "repayment_account": "返済口座"
         }
     ]

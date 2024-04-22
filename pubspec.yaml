@@ -12,6 +12,8 @@ dependencies:
   cupertino_icons: ^1.0.6
   freezed: ^2.5.2
   freezed_annotation: ^2.4.1
+  flip_card: ^0.7.0
+  oktoast: ^3.4.0
 
 dev_dependencies:
   flutter_test:
@@ -26,3 +28,13 @@ flutter:
     - json/
     - images/
     - images/card_logo/
+  fonts:
+    - family: OCR-A
+      fonts:
+        - asset: fonts/OCR-A.ttf
+    - family: OCR-B
+      fonts:
+        - asset: fonts/OCR-B.ttf
+    - family: Farrington-7B
+      fonts:
+        - asset: fonts/Farrington-7B.ttf
