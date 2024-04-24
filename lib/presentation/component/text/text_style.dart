@@ -26,7 +26,7 @@ TextStyle effectiveDateTextStyle = const TextStyle(
 
 TextStyle cardHolderTextStyle = const TextStyle(
   color: Colors.black,
-  fontSize: 18,
+  fontSize: 20,
   fontWeight: FontWeight.w700,
   fontFamily: GlobalAssetFont.ocrA,
 );

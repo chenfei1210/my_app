@@ -15,7 +15,6 @@ class _CardBoxDecoration extends StatelessWidget {
     const aspectRatio = _CardBoxDecoration.width / _CardBoxDecoration.height;
     const circular =
         300 * (_CardBoxDecoration.circular / _CardBoxDecoration.width);
-    const padding = circular / 2;
 
     return LayoutBuilder(
       builder: (context, constraints) => AspectRatio(
@@ -36,7 +35,7 @@ class _CardBoxDecoration extends StatelessWidget {
             ],
           ),
           child: Padding(
-            padding: const EdgeInsets.all(padding),
+            padding: const EdgeInsets.all(circular),
             child: content,
           ),
         ),
