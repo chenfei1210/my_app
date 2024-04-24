@@ -58,6 +58,9 @@ class CardItem with _$CardItem {
 
     /// 返済口座
     @Default('') final String repaymentAccount,
+
+    /// 備考
+    @Default('') final String note,
   }) = _CardItem;
 
   factory CardItem.fromJson(Map<String, dynamic> json) =>

@@ -28,6 +28,8 @@ class _CardBackDesign extends StatelessWidget {
               Text('年会費: ${cardItem.annualFee}'),
               // 返済口座
               Text('返済口座: ${cardItem.repaymentAccount}'),
+              // 備考
+              Text('備考: ${cardItem.note}'),
             ],
           ),
         ),

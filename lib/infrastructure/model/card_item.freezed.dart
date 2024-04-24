@@ -67,6 +67,9 @@ mixin _$CardItem {
   /// 返済口座
   String get repaymentAccount => throw _privateConstructorUsedError;
 
+  /// 備考
+  String get note => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CardItemCopyWith<CardItem> get copyWith =>
@@ -91,7 +94,8 @@ abstract class $CardItemCopyWith<$Res> {
       @IntToCurrencyVolumeConverter() CurrencyVolume availableShoppingLimit,
       @IntToCurrencyVolumeConverter() CurrencyVolume availableCashAdvanceLimit,
       @IntToCurrencyVolumeConverter() CurrencyVolume annualFee,
-      String repaymentAccount});
+      String repaymentAccount,
+      String note});
 }
 
 /// @nodoc
@@ -120,6 +124,7 @@ class _$CardItemCopyWithImpl<$Res, $Val extends CardItem>
     Object? availableCashAdvanceLimit = null,
     Object? annualFee = null,
     Object? repaymentAccount = null,
+    Object? note = null,
   }) {
     return _then(_value.copyWith(
       cardName: null == cardName
@@ -174,6 +179,10 @@ class _$CardItemCopyWithImpl<$Res, $Val extends CardItem>
           ? _value.repaymentAccount
           : repaymentAccount // ignore: cast_nullable_to_non_nullable
               as String,
+      note: null == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -199,7 +208,8 @@ abstract class _$$CardItemImplCopyWith<$Res>
       @IntToCurrencyVolumeConverter() CurrencyVolume availableShoppingLimit,
       @IntToCurrencyVolumeConverter() CurrencyVolume availableCashAdvanceLimit,
       @IntToCurrencyVolumeConverter() CurrencyVolume annualFee,
-      String repaymentAccount});
+      String repaymentAccount,
+      String note});
 }
 
 /// @nodoc
@@ -226,6 +236,7 @@ class __$$CardItemImplCopyWithImpl<$Res>
     Object? availableCashAdvanceLimit = null,
     Object? annualFee = null,
     Object? repaymentAccount = null,
+    Object? note = null,
   }) {
     return _then(_$CardItemImpl(
       cardName: null == cardName
@@ -280,6 +291,10 @@ class __$$CardItemImplCopyWithImpl<$Res>
           ? _value.repaymentAccount
           : repaymentAccount // ignore: cast_nullable_to_non_nullable
               as String,
+      note: null == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -305,7 +320,8 @@ class _$CardItemImpl implements _CardItem {
       @IntToCurrencyVolumeConverter()
       this.availableCashAdvanceLimit = const CurrencyVolume(0),
       @IntToCurrencyVolumeConverter() this.annualFee = const CurrencyVolume(0),
-      this.repaymentAccount = ''});
+      this.repaymentAccount = '',
+      this.note = ''});
 
   factory _$CardItemImpl.fromJson(Map<String, dynamic> json) =>
       _$$CardItemImplFromJson(json);
@@ -381,9 +397,14 @@ class _$CardItemImpl implements _CardItem {
   @JsonKey()
   final String repaymentAccount;
 
+  /// 備考
+  @override
+  @JsonKey()
+  final String note;
+
   @override
   String toString() {
-    return 'CardItem(cardName: $cardName, issuingCompany: $issuingCompany, brand: $brand, classification: $classification, number: $number, effectiveDate: $effectiveDate, cardHolder: $cardHolder, passcode: $passcode, cardVerificationValue: $cardVerificationValue, availableShoppingLimit: $availableShoppingLimit, availableCashAdvanceLimit: $availableCashAdvanceLimit, annualFee: $annualFee, repaymentAccount: $repaymentAccount)';
+    return 'CardItem(cardName: $cardName, issuingCompany: $issuingCompany, brand: $brand, classification: $classification, number: $number, effectiveDate: $effectiveDate, cardHolder: $cardHolder, passcode: $passcode, cardVerificationValue: $cardVerificationValue, availableShoppingLimit: $availableShoppingLimit, availableCashAdvanceLimit: $availableCashAdvanceLimit, annualFee: $annualFee, repaymentAccount: $repaymentAccount, note: $note)';
   }
 
   @override
@@ -415,7 +436,8 @@ class _$CardItemImpl implements _CardItem {
             (identical(other.annualFee, annualFee) ||
                 other.annualFee == annualFee) &&
             (identical(other.repaymentAccount, repaymentAccount) ||
-                other.repaymentAccount == repaymentAccount));
+                other.repaymentAccount == repaymentAccount) &&
+            (identical(other.note, note) || other.note == note));
   }
 
   @JsonKey(ignore: true)
@@ -434,7 +456,8 @@ class _$CardItemImpl implements _CardItem {
       availableShoppingLimit,
       availableCashAdvanceLimit,
       annualFee,
-      repaymentAccount);
+      repaymentAccount,
+      note);
 
   @JsonKey(ignore: true)
   @override
@@ -467,7 +490,8 @@ abstract class _CardItem implements CardItem {
       @IntToCurrencyVolumeConverter()
       final CurrencyVolume availableCashAdvanceLimit,
       @IntToCurrencyVolumeConverter() final CurrencyVolume annualFee,
-      final String repaymentAccount}) = _$CardItemImpl;
+      final String repaymentAccount,
+      final String note}) = _$CardItemImpl;
 
   factory _CardItem.fromJson(Map<String, dynamic> json) =
       _$CardItemImpl.fromJson;
@@ -530,6 +554,10 @@ abstract class _CardItem implements CardItem {
 
   /// 返済口座
   String get repaymentAccount;
+  @override
+
+  /// 備考
+  String get note;
   @override
   @JsonKey(ignore: true)
   _$$CardItemImplCopyWith<_$CardItemImpl> get copyWith =>
