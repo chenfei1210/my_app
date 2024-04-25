@@ -1,4 +1,4 @@
-part of 'package:my_app/presentation/card/custom_card.dart';
+part of 'package:my_app/presentation/card/card_view/card_widget.dart';
 
 class _CardFrontDesign extends StatelessWidget {
   const _CardFrontDesign({

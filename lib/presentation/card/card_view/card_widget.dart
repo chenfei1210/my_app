@@ -8,12 +8,12 @@ import 'package:my_app/presentation/component/text/text_style.dart';
 import 'package:my_app/resources/assets/images.dart';
 import 'package:oktoast/oktoast.dart';
 
-part 'package:my_app/presentation/card/parts/card_back_design.dart';
-part 'package:my_app/presentation/card/parts/card_box_decoration.dart';
-part 'package:my_app/presentation/card/parts/card_front_design.dart';
+part 'package:my_app/presentation/card/card_view/parts/card_back_design.dart';
+part 'package:my_app/presentation/card/card_view/parts/card_box_decoration.dart';
+part 'package:my_app/presentation/card/card_view/parts/card_front_design.dart';
 
-class CustomCard extends StatelessWidget {
-  CustomCard({
+class CardWidget extends StatelessWidget {
+  CardWidget({
     required this.cardItem,
     super.key,
   });
