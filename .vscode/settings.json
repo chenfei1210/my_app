@@ -3,6 +3,7 @@
         "Cupertino",
         "farrington",
         "oktoast",
-        "passcode"
+        "passcode",
+        "riverpod"
     ]
 }

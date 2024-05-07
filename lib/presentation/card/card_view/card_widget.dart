@@ -15,29 +15,34 @@ part 'package:my_app/presentation/card/card_view/parts/card_front_design.dart';
 class CardWidget extends StatelessWidget {
   CardWidget({
     required this.cardItem,
+    required this.width,
     super.key,
   });
 
   final CardItem cardItem;
+  final double width;
   final _controller = FlipCardController();
 
   void doStuff() => _controller.toggleCard();
 
   @override
   Widget build(BuildContext context) {
-    return FlipCard(
-      controller: _controller,
-      flipOnTouch: false,
-      front: _CardBoxDecoration(
-        content: _CardFrontDesign(
-          controller: _controller,
-          cardItem: cardItem,
+    return SizedBox(
+      width: width,
+      child: FlipCard(
+        controller: _controller,
+        flipOnTouch: false,
+        front: _CardBoxDecoration(
+          content: _CardFrontDesign(
+            controller: _controller,
+            cardItem: cardItem,
+          ),
         ),
-      ),
-      back: _CardBoxDecoration(
-        content: _CardBackDesign(
-          controller: _controller,
-          cardItem: cardItem,
+        back: _CardBoxDecoration(
+          content: _CardBackDesign(
+            controller: _controller,
+            cardItem: cardItem,
+          ),
         ),
       ),
     );

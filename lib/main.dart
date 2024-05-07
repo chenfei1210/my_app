@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_app/presentation/card/card_page.dart';
 import 'package:my_app/presentation/home/home_page.dart';
 import 'package:oktoast/oktoast.dart';
 
 void main() {
   // debugPaintSizeEnabled = true;
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
