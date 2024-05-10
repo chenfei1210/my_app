@@ -7,6 +7,7 @@ part 'card_state.freezed.dart';
 @freezed
 class CardState with _$CardState {
   const factory CardState({
+    @Default('') String enteredSearchKeyword,
     @Default(AsyncValue.loading()) AsyncValue<List<CardItem>> cardItemList,
   }) = _CardState;
 }

@@ -26,4 +26,20 @@ class CardNotifier extends StateNotifier<CardState> {
       state = state.copyWith(cardItemList: AsyncValue.data(cardItemList));
     }
   }
+
+  Future<void> onSearchKeywordChanged(String searchKeyword) async {
+    if (!mounted) {
+      return;
+    }
+    final cardItemList = (await cardService.getCardInfo())
+        .where((element) =>
+            element.number.replaceAll(' ', '').contains(searchKeyword))
+        .toList();
+    if (mounted) {
+      state = state.copyWith(
+        enteredSearchKeyword: searchKeyword,
+        cardItemList: AsyncValue.data(cardItemList),
+      );
+    }
+  }
 }

@@ -29,19 +29,22 @@ class CardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width,
-      child: FlipCard(
-        controller: _controller,
-        flipOnTouch: false,
-        front: _CardBoxDecoration(
-          content: _CardFrontDesign(
-            controller: _controller,
-            cardItem: cardItem,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: FlipCard(
+          controller: _controller,
+          flipOnTouch: false,
+          front: _CardBoxDecoration(
+            content: _CardFrontDesign(
+              controller: _controller,
+              cardItem: cardItem,
+            ),
           ),
-        ),
-        back: _CardBoxDecoration(
-          content: _CardBackDesign(
-            controller: _controller,
-            cardItem: cardItem,
+          back: _CardBoxDecoration(
+            content: _CardBackDesign(
+              controller: _controller,
+              cardItem: cardItem,
+            ),
           ),
         ),
       ),

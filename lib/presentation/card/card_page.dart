@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_app/domain/card/card_notifier.dart';
 import 'package:my_app/domain/card/card_state.dart';
@@ -11,6 +12,7 @@ class CardPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final CardState cardState = ref.watch(cardNotifierProvider);
+    final CardNotifier cardNotifier = ref.watch(cardNotifierProvider.notifier);
 
     return Scaffold(
       appBar: AppBar(
@@ -20,14 +22,37 @@ class CardPage extends ConsumerWidget {
       body: Center(
         child: cardState.cardItemList.when(
           data: (data) => Column(
-            children: data
-                .map(
-                  (cardInfo) => CardWidget(
-                    cardItem: cardInfo,
-                    width: 350,
+            children: [
+              TextField(
+                decoration:
+                    const InputDecoration(labelText: 'カード番号を入力して検索(スペースを抜く)'),
+                keyboardType: TextInputType.number,
+                // 数字だけ入力できる
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.digitsOnly
+                ],
+                onChanged: (text) {
+                  cardNotifier.onSearchKeywordChanged(text);
+                },
+              ),
+              const SizedBox(
+                height: 32,
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      ...data.map(
+                        (cardInfo) => CardWidget(
+                          cardItem: cardInfo,
+                          width: 350,
+                        ),
+                      )
+                    ],
                   ),
-                )
-                .toList(),
+                ),
+              )
+            ],
           ),
           error: (error, stackTrace) => const Text('ERROR'),
           loading: () => const LoadingView(),

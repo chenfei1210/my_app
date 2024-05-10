@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CardState {
+  String get enteredSearchKeyword => throw _privateConstructorUsedError;
   AsyncValue<List<CardItem>> get cardItemList =>
       throw _privateConstructorUsedError;
 
@@ -29,7 +30,8 @@ abstract class $CardStateCopyWith<$Res> {
   factory $CardStateCopyWith(CardState value, $Res Function(CardState) then) =
       _$CardStateCopyWithImpl<$Res, CardState>;
   @useResult
-  $Res call({AsyncValue<List<CardItem>> cardItemList});
+  $Res call(
+      {String enteredSearchKeyword, AsyncValue<List<CardItem>> cardItemList});
 }
 
 /// @nodoc
@@ -45,9 +47,14 @@ class _$CardStateCopyWithImpl<$Res, $Val extends CardState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? enteredSearchKeyword = null,
     Object? cardItemList = null,
   }) {
     return _then(_value.copyWith(
+      enteredSearchKeyword: null == enteredSearchKeyword
+          ? _value.enteredSearchKeyword
+          : enteredSearchKeyword // ignore: cast_nullable_to_non_nullable
+              as String,
       cardItemList: null == cardItemList
           ? _value.cardItemList
           : cardItemList // ignore: cast_nullable_to_non_nullable
@@ -64,7 +71,8 @@ abstract class _$$CardStateImplCopyWith<$Res>
       __$$CardStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AsyncValue<List<CardItem>> cardItemList});
+  $Res call(
+      {String enteredSearchKeyword, AsyncValue<List<CardItem>> cardItemList});
 }
 
 /// @nodoc
@@ -78,9 +86,14 @@ class __$$CardStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? enteredSearchKeyword = null,
     Object? cardItemList = null,
   }) {
     return _then(_$CardStateImpl(
+      enteredSearchKeyword: null == enteredSearchKeyword
+          ? _value.enteredSearchKeyword
+          : enteredSearchKeyword // ignore: cast_nullable_to_non_nullable
+              as String,
       cardItemList: null == cardItemList
           ? _value.cardItemList
           : cardItemList // ignore: cast_nullable_to_non_nullable
@@ -92,15 +105,20 @@ class __$$CardStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CardStateImpl implements _CardState {
-  const _$CardStateImpl({this.cardItemList = const AsyncValue.loading()});
+  const _$CardStateImpl(
+      {this.enteredSearchKeyword = '',
+      this.cardItemList = const AsyncValue.loading()});
 
+  @override
+  @JsonKey()
+  final String enteredSearchKeyword;
   @override
   @JsonKey()
   final AsyncValue<List<CardItem>> cardItemList;
 
   @override
   String toString() {
-    return 'CardState(cardItemList: $cardItemList)';
+    return 'CardState(enteredSearchKeyword: $enteredSearchKeyword, cardItemList: $cardItemList)';
   }
 
   @override
@@ -108,12 +126,15 @@ class _$CardStateImpl implements _CardState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CardStateImpl &&
+            (identical(other.enteredSearchKeyword, enteredSearchKeyword) ||
+                other.enteredSearchKeyword == enteredSearchKeyword) &&
             (identical(other.cardItemList, cardItemList) ||
                 other.cardItemList == cardItemList));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, cardItemList);
+  int get hashCode =>
+      Object.hash(runtimeType, enteredSearchKeyword, cardItemList);
 
   @JsonKey(ignore: true)
   @override
@@ -123,9 +144,12 @@ class _$CardStateImpl implements _CardState {
 }
 
 abstract class _CardState implements CardState {
-  const factory _CardState({final AsyncValue<List<CardItem>> cardItemList}) =
-      _$CardStateImpl;
+  const factory _CardState(
+      {final String enteredSearchKeyword,
+      final AsyncValue<List<CardItem>> cardItemList}) = _$CardStateImpl;
 
+  @override
+  String get enteredSearchKeyword;
   @override
   AsyncValue<List<CardItem>> get cardItemList;
   @override
