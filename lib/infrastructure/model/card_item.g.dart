@@ -39,6 +39,9 @@ _$CardItemImpl _$$CardItemImplFromJson(Map<String, dynamic> json) =>
               .fromJson(json['annual_fee'] as int),
       repaymentAccount: json['repayment_account'] as String? ?? '',
       note: json['note'] as String? ?? '',
+      managedSites: json['managed_sites'] as String? ?? '',
+      account: json['account'] as String? ?? '',
+      password: json['password'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$CardItemImplToJson(_$CardItemImpl instance) =>
@@ -62,4 +65,7 @@ Map<String, dynamic> _$$CardItemImplToJson(_$CardItemImpl instance) =>
           const IntToCurrencyVolumeConverter().toJson(instance.annualFee),
       'repayment_account': instance.repaymentAccount,
       'note': instance.note,
+      'managed_sites': instance.managedSites,
+      'account': instance.account,
+      'password': instance.password,
     };

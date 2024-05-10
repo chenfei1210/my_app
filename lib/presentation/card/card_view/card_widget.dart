@@ -3,6 +3,7 @@ import 'package:flip_card/flip_card_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:my_app/infrastructure/model/card_item.dart';
+import 'package:my_app/presentation/component/text/link_text.dart';
 import 'package:my_app/presentation/component/text/long_press_copy_text.dart';
 import 'package:my_app/presentation/component/text/text_style.dart';
 import 'package:my_app/resources/assets/images.dart';

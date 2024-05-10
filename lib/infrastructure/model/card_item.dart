@@ -61,6 +61,15 @@ class CardItem with _$CardItem {
 
     /// 備考
     @Default('') final String note,
+
+    /// 管理サイト
+    @Default('') final String managedSites,
+
+    /// アカウント
+    @Default('') final String account,
+
+    /// パスワード
+    @Default('') final String password,
   }) = _CardItem;
 
   factory CardItem.fromJson(Map<String, dynamic> json) =>

@@ -70,6 +70,15 @@ mixin _$CardItem {
   /// 備考
   String get note => throw _privateConstructorUsedError;
 
+  /// 管理サイト
+  String get managedSites => throw _privateConstructorUsedError;
+
+  /// アカウント
+  String get account => throw _privateConstructorUsedError;
+
+  /// パスワード
+  String get password => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CardItemCopyWith<CardItem> get copyWith =>
@@ -95,7 +104,10 @@ abstract class $CardItemCopyWith<$Res> {
       @IntToCurrencyVolumeConverter() CurrencyVolume availableCashAdvanceLimit,
       @IntToCurrencyVolumeConverter() CurrencyVolume annualFee,
       String repaymentAccount,
-      String note});
+      String note,
+      String managedSites,
+      String account,
+      String password});
 }
 
 /// @nodoc
@@ -125,6 +137,9 @@ class _$CardItemCopyWithImpl<$Res, $Val extends CardItem>
     Object? annualFee = null,
     Object? repaymentAccount = null,
     Object? note = null,
+    Object? managedSites = null,
+    Object? account = null,
+    Object? password = null,
   }) {
     return _then(_value.copyWith(
       cardName: null == cardName
@@ -183,6 +198,18 @@ class _$CardItemCopyWithImpl<$Res, $Val extends CardItem>
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String,
+      managedSites: null == managedSites
+          ? _value.managedSites
+          : managedSites // ignore: cast_nullable_to_non_nullable
+              as String,
+      account: null == account
+          ? _value.account
+          : account // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -209,7 +236,10 @@ abstract class _$$CardItemImplCopyWith<$Res>
       @IntToCurrencyVolumeConverter() CurrencyVolume availableCashAdvanceLimit,
       @IntToCurrencyVolumeConverter() CurrencyVolume annualFee,
       String repaymentAccount,
-      String note});
+      String note,
+      String managedSites,
+      String account,
+      String password});
 }
 
 /// @nodoc
@@ -237,6 +267,9 @@ class __$$CardItemImplCopyWithImpl<$Res>
     Object? annualFee = null,
     Object? repaymentAccount = null,
     Object? note = null,
+    Object? managedSites = null,
+    Object? account = null,
+    Object? password = null,
   }) {
     return _then(_$CardItemImpl(
       cardName: null == cardName
@@ -295,6 +328,18 @@ class __$$CardItemImplCopyWithImpl<$Res>
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String,
+      managedSites: null == managedSites
+          ? _value.managedSites
+          : managedSites // ignore: cast_nullable_to_non_nullable
+              as String,
+      account: null == account
+          ? _value.account
+          : account // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -321,7 +366,10 @@ class _$CardItemImpl implements _CardItem {
       this.availableCashAdvanceLimit = const CurrencyVolume(0),
       @IntToCurrencyVolumeConverter() this.annualFee = const CurrencyVolume(0),
       this.repaymentAccount = '',
-      this.note = ''});
+      this.note = '',
+      this.managedSites = '',
+      this.account = '',
+      this.password = ''});
 
   factory _$CardItemImpl.fromJson(Map<String, dynamic> json) =>
       _$$CardItemImplFromJson(json);
@@ -402,9 +450,24 @@ class _$CardItemImpl implements _CardItem {
   @JsonKey()
   final String note;
 
+  /// 管理サイト
+  @override
+  @JsonKey()
+  final String managedSites;
+
+  /// アカウント
+  @override
+  @JsonKey()
+  final String account;
+
+  /// パスワード
+  @override
+  @JsonKey()
+  final String password;
+
   @override
   String toString() {
-    return 'CardItem(cardName: $cardName, issuingCompany: $issuingCompany, brand: $brand, classification: $classification, number: $number, effectiveDate: $effectiveDate, cardHolder: $cardHolder, passcode: $passcode, cardVerificationValue: $cardVerificationValue, availableShoppingLimit: $availableShoppingLimit, availableCashAdvanceLimit: $availableCashAdvanceLimit, annualFee: $annualFee, repaymentAccount: $repaymentAccount, note: $note)';
+    return 'CardItem(cardName: $cardName, issuingCompany: $issuingCompany, brand: $brand, classification: $classification, number: $number, effectiveDate: $effectiveDate, cardHolder: $cardHolder, passcode: $passcode, cardVerificationValue: $cardVerificationValue, availableShoppingLimit: $availableShoppingLimit, availableCashAdvanceLimit: $availableCashAdvanceLimit, annualFee: $annualFee, repaymentAccount: $repaymentAccount, note: $note, managedSites: $managedSites, account: $account, password: $password)';
   }
 
   @override
@@ -437,7 +500,12 @@ class _$CardItemImpl implements _CardItem {
                 other.annualFee == annualFee) &&
             (identical(other.repaymentAccount, repaymentAccount) ||
                 other.repaymentAccount == repaymentAccount) &&
-            (identical(other.note, note) || other.note == note));
+            (identical(other.note, note) || other.note == note) &&
+            (identical(other.managedSites, managedSites) ||
+                other.managedSites == managedSites) &&
+            (identical(other.account, account) || other.account == account) &&
+            (identical(other.password, password) ||
+                other.password == password));
   }
 
   @JsonKey(ignore: true)
@@ -457,7 +525,10 @@ class _$CardItemImpl implements _CardItem {
       availableCashAdvanceLimit,
       annualFee,
       repaymentAccount,
-      note);
+      note,
+      managedSites,
+      account,
+      password);
 
   @JsonKey(ignore: true)
   @override
@@ -491,7 +562,10 @@ abstract class _CardItem implements CardItem {
       final CurrencyVolume availableCashAdvanceLimit,
       @IntToCurrencyVolumeConverter() final CurrencyVolume annualFee,
       final String repaymentAccount,
-      final String note}) = _$CardItemImpl;
+      final String note,
+      final String managedSites,
+      final String account,
+      final String password}) = _$CardItemImpl;
 
   factory _CardItem.fromJson(Map<String, dynamic> json) =
       _$CardItemImpl.fromJson;
@@ -558,6 +632,18 @@ abstract class _CardItem implements CardItem {
 
   /// 備考
   String get note;
+  @override
+
+  /// 管理サイト
+  String get managedSites;
+  @override
+
+  /// アカウント
+  String get account;
+  @override
+
+  /// パスワード
+  String get password;
   @override
   @JsonKey(ignore: true)
   _$$CardItemImplCopyWith<_$CardItemImpl> get copyWith =>
