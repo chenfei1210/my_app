@@ -47,7 +47,7 @@ class InfoRepository {
   /// ローカルから設定ファイルを取得
   Future<Info?> _fetchInfoFromLocal() async {
     // TODO test code
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 1));
     try {
       final jsonData = await _localInfoDataSource.fetchInfoFile();
       return Info.fromJson(jsonData);

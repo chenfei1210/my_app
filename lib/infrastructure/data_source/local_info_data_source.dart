@@ -6,7 +6,8 @@ import 'package:flutter/services.dart';
 class LocalInfoDataSource {
   /// infoファイルの取得
   Future<Map<String, dynamic>> fetchInfoFile() async {
-    const String filePath = 'json/info.json';
+    const String flavor = String.fromEnvironment('FLAVOR');
+    const String filePath = 'json/$flavor/info.json';
     final String textData = await rootBundle.loadString(filePath);
     return jsonDecode(textData);
   }
