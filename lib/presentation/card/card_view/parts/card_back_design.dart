@@ -26,21 +26,47 @@ class _CardBackDesign extends StatelessWidget {
                 // キャッシング利用可能枠
                 Text('キャッシング利用可能枠: ${cardItem.availableCashAdvanceLimit}円'),
                 // 年会費
-                Text('年会費: ${cardItem.annualFee}'),
+                Text('年会費: ${cardItem.annualFee}円'),
                 // 返済口座
                 Text('返済口座: ${cardItem.repaymentAccount}'),
                 // 備考
                 Text('備考: ${cardItem.note}'),
                 // 管理サイト
-                LinkText(
-                  text: '管理サイト: ',
-                  linkText: cardItem.managedSites,
-                  linkUrl: cardItem.managedSites,
+                Row(
+                  children: [
+                    const Text('管理サイト: '),
+                    InkWell(
+                      child: const Text(
+                        'タップしてアクセス',
+                        style: TextStyle(color: Colors.blue),
+                      ),
+                      onTap: () {
+                        HapticFeedback.vibrate();
+                        launchUrl(Uri.parse(cardItem.managedSites));
+                      },
+                    ),
+                  ],
                 ),
                 // アカウント
-                Text('アカウント: ${cardItem.account}'),
+                Row(
+                  children: [
+                    const Text('アカウント: '),
+                    LongPressCopyText(
+                      Text(cardItem.account),
+                      toastTitle: 'アカウント',
+                    ),
+                  ],
+                ),
                 // パスワード
-                Text('パスワード: ${cardItem.password}'),
+                Row(
+                  children: [
+                    const Text('パスワード: '),
+                    LongPressCopyText(
+                      Text(cardItem.password),
+                      toastTitle: 'パスワード',
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
