@@ -9,6 +9,9 @@ import 'package:my_app/presentation/component/view/loading_view.dart';
 class CardPage extends ConsumerWidget {
   const CardPage({super.key});
 
+  static const routePath = 'card';
+  static const routeName = 'card';
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final CardState cardState = ref.watch(cardNotifierProvider);

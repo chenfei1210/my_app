@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:my_app/domain/home/home_notifier.dart';
 import 'package:my_app/domain/home/home_state.dart';
+import 'package:my_app/presentation/card/card_page.dart';
 import 'package:my_app/presentation/component/view/loading_view.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
+
+  static const routePath = '/home';
+  static const routeName = 'home';
+  static const pageName = 'ホーム';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -14,7 +20,7 @@ class HomePage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Home'),
+        title: const Text(pageName),
       ),
       body: homeState.infoVersion.when(
         data: (infoVersion) => Column(
@@ -23,7 +29,7 @@ class HomePage extends ConsumerWidget {
             Expanded(
               child: ListView(
                 children: const [
-                  PageItem('Card', '/card'),
+                  PageItem('Card', CardPage.routeName),
                 ],
               ),
             ),
@@ -38,8 +44,8 @@ class HomePage extends ConsumerWidget {
 
 class PageItem extends StatelessWidget {
   final String title;
-  final String route;
-  const PageItem(this.title, this.route, {super.key});
+  final String routeName;
+  const PageItem(this.title, this.routeName, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +54,7 @@ class PageItem extends StatelessWidget {
         title,
         style: const TextStyle(fontSize: 25),
       ),
-      onPressed: () => Navigator.pushNamed(context, route),
+      onPressed: () => context.goNamed(routeName),
     );
   }
 }
