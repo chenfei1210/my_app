@@ -1,21 +1,29 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_app/infrastructure/model/card_item.dart';
-import 'package:my_app/infrastructure/repository/info_repository.dart';
+import 'package:my_app/infrastructure/repository/card_repository.dart';
 
 final cardService = Provider.autoDispose(
   (ref) => CardService(
-    infoRepository: ref.read(infoRepository),
+    cardRepository: ref.read(cardRepository),
   ),
 );
 
 class CardService {
   CardService({
-    required this.infoRepository,
+    required this.cardRepository,
   });
 
-  final InfoRepository infoRepository;
+  final CardRepository cardRepository;
 
-  Future<List<CardItem>> getCardInfo() async {
-    return (await infoRepository.getInfoData()).cardList;
+  Future<List<CardItem>> fetchCardItemAll() async {
+    return await cardRepository.fetchCardItemAll();
+  }
+
+  Future<List<CardItem>> getCardItemByNumber(String number) async {
+    return await cardRepository.getCardItemByNumber(number);
+  }
+
+  Future<List<CardItem>> searchCardItemByNumber(String number) async {
+    return await cardRepository.searchCardItemByNumber(number);
   }
 }

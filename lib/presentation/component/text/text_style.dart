@@ -3,16 +3,16 @@ import 'package:my_app/resources/assets/fonts.dart';
 
 TextStyle numberTextStyle = const TextStyle(
   color: Colors.black,
-  letterSpacing: 3.2,
-  fontSize: 20,
+  letterSpacing: 3,
+  fontSize: 18,
   fontWeight: FontWeight.w700,
   fontFamily: GlobalAssetFont.farrington7b,
 );
 
 TextStyle cardVerificationValueTextStyle = const TextStyle(
   color: Colors.black,
-  letterSpacing: 3.2,
-  fontSize: 18,
+  letterSpacing: 3,
+  fontSize: 16,
   fontWeight: FontWeight.w700,
   fontFamily: GlobalAssetFont.farrington7b,
 );

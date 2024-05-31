@@ -15,20 +15,12 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$HomeState {
-  AsyncValue<int> get infoVersion => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $HomeStateCopyWith<HomeState> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+mixin _$HomeState {}
 
 /// @nodoc
 abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res, HomeState>;
-  @useResult
-  $Res call({AsyncValue<int> infoVersion});
 }
 
 /// @nodoc
@@ -40,30 +32,13 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? infoVersion = null,
-  }) {
-    return _then(_value.copyWith(
-      infoVersion: null == infoVersion
-          ? _value.infoVersion
-          : infoVersion // ignore: cast_nullable_to_non_nullable
-              as AsyncValue<int>,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$HomeStateImplCopyWith<$Res>
-    implements $HomeStateCopyWith<$Res> {
+abstract class _$$HomeStateImplCopyWith<$Res> {
   factory _$$HomeStateImplCopyWith(
           _$HomeStateImpl value, $Res Function(_$HomeStateImpl) then) =
       __$$HomeStateImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({AsyncValue<int> infoVersion});
 }
 
 /// @nodoc
@@ -73,62 +48,28 @@ class __$$HomeStateImplCopyWithImpl<$Res>
   __$$HomeStateImplCopyWithImpl(
       _$HomeStateImpl _value, $Res Function(_$HomeStateImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? infoVersion = null,
-  }) {
-    return _then(_$HomeStateImpl(
-      infoVersion: null == infoVersion
-          ? _value.infoVersion
-          : infoVersion // ignore: cast_nullable_to_non_nullable
-              as AsyncValue<int>,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$HomeStateImpl implements _HomeState {
-  const _$HomeStateImpl({this.infoVersion = const AsyncValue.loading()});
-
-  @override
-  @JsonKey()
-  final AsyncValue<int> infoVersion;
+  const _$HomeStateImpl();
 
   @override
   String toString() {
-    return 'HomeState(infoVersion: $infoVersion)';
+    return 'HomeState()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$HomeStateImpl &&
-            (identical(other.infoVersion, infoVersion) ||
-                other.infoVersion == infoVersion));
+        (other.runtimeType == runtimeType && other is _$HomeStateImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, infoVersion);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith =>
-      __$$HomeStateImplCopyWithImpl<_$HomeStateImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 }
 
 abstract class _HomeState implements HomeState {
-  const factory _HomeState({final AsyncValue<int> infoVersion}) =
-      _$HomeStateImpl;
-
-  @override
-  AsyncValue<int> get infoVersion;
-  @override
-  @JsonKey(ignore: true)
-  _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory _HomeState() = _$HomeStateImpl;
 }

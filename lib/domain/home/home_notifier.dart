@@ -16,14 +16,5 @@ class HomeNotifier extends StateNotifier<HomeState> {
 
   final HomeService homeService;
 
-  Future<void> init() async {
-    if (!mounted) {
-      return;
-    }
-
-    final infoVersion = await homeService.getInfoVersion();
-    if (mounted) {
-      state = state.copyWith(infoVersion: AsyncValue.data(infoVersion));
-    }
-  }
+  Future<void> init() async {}
 }

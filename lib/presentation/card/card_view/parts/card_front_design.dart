@@ -69,15 +69,8 @@ class _CardFrontDesign extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            ...List<LongPressCopyText>.generate(
-              4,
-              (int index) => LongPressCopyText(
-                Text(
-                  cardItem.number.split(' ').toList()[index],
-                  style: numberTextStyle,
-                ),
-                toastTitle: 'カード番号(${index + 1}番目)',
-              ),
+            Expanded(
+              child: displayNumberWidget(cardItem.displayNumber),
             ),
             GestureDetector(
               onLongPress: () {
@@ -145,6 +138,32 @@ class _CardFrontDesign extends StatelessWidget {
           ],
         ),
       ],
+    );
+  }
+
+  Widget displayNumberWidget(String disPlayNumber) {
+    final displayNumberSplitList = disPlayNumber.split(' ').toList();
+    List<Widget> displayNumberWidgetList = [];
+
+    for (var i = 0; i < displayNumberSplitList.length; i++) {
+      displayNumberWidgetList.add(
+        LongPressCopyText(
+          Text(
+            displayNumberSplitList[i],
+            style: numberTextStyle,
+          ),
+          toastTitle: 'カード番号(${i + 1}番目)',
+        ),
+      );
+
+      if (i != displayNumberSplitList.length - 1) {
+        displayNumberWidgetList.add(const SizedBox(width: 8));
+      }
+    }
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: displayNumberWidgetList,
     );
   }
 }

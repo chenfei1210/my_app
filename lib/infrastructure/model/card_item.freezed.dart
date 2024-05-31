@@ -347,7 +347,7 @@ class __$$CardItemImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class _$CardItemImpl implements _CardItem {
+class _$CardItemImpl extends _CardItem {
   const _$CardItemImpl(
       {this.cardName = '',
       this.issuingCompany = '',
@@ -369,7 +369,8 @@ class _$CardItemImpl implements _CardItem {
       this.note = '',
       this.managedSites = '',
       this.account = '',
-      this.password = ''});
+      this.password = ''})
+      : super._();
 
   factory _$CardItemImpl.fromJson(Map<String, dynamic> json) =>
       _$$CardItemImplFromJson(json);
@@ -544,7 +545,7 @@ class _$CardItemImpl implements _CardItem {
   }
 }
 
-abstract class _CardItem implements CardItem {
+abstract class _CardItem extends CardItem {
   const factory _CardItem(
       {final String cardName,
       final String issuingCompany,
@@ -566,6 +567,7 @@ abstract class _CardItem implements CardItem {
       final String managedSites,
       final String account,
       final String password}) = _$CardItemImpl;
+  const _CardItem._() : super._();
 
   factory _CardItem.fromJson(Map<String, dynamic> json) =
       _$CardItemImpl.fromJson;

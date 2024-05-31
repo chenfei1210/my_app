@@ -21,24 +21,23 @@ class CardNotifier extends StateNotifier<CardState> {
       return;
     }
 
-    final cardItemList = await cardService.getCardInfo();
+    final cardItemList = await cardService.fetchCardItemAll();
     if (mounted) {
       state = state.copyWith(cardItemList: AsyncValue.data(cardItemList));
     }
   }
 
-  Future<void> onSearchKeywordChanged(String searchKeyword) async {
+  Future<void> changeSearchKeyword(String searchKeyword) async {
     if (!mounted) {
       return;
     }
-    final cardItemList = (await cardService.getCardInfo())
-        .where((element) =>
-            element.number.replaceAll(' ', '').contains(searchKeyword))
-        .toList();
+    final searchResult = searchKeyword.isEmpty
+        ? await cardService.fetchCardItemAll()
+        : await cardService.searchCardItemByNumber(searchKeyword);
     if (mounted) {
       state = state.copyWith(
         enteredSearchKeyword: searchKeyword,
-        cardItemList: AsyncValue.data(cardItemList),
+        cardItemList: AsyncValue.data(searchResult),
       );
     }
   }

@@ -4,6 +4,7 @@
         "farrington",
         "oktoast",
         "passcode",
-        "riverpod"
+        "riverpod",
+        "sqflite"
     ]
 }

@@ -8,6 +8,8 @@ part 'card_item.g.dart';
 
 @freezed
 class CardItem with _$CardItem {
+  const CardItem._();
+
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory CardItem({
     /// カード名
@@ -74,6 +76,41 @@ class CardItem with _$CardItem {
 
   factory CardItem.fromJson(Map<String, dynamic> json) =>
       _$CardItemFromJson(json);
+
+  String get displayNumber {
+    switch (brand) {
+      case CardBrand.visa:
+      case CardBrand.mastercard:
+      case CardBrand.jcb:
+      case CardBrand.unionPay:
+        if (number.length != 16) {
+          return 'ERROR';
+        }
+        final part1 = number.substring(0, 4);
+        final part2 = number.substring(4, 8);
+        final part3 = number.substring(8, 12);
+        final part4 = number.substring(12);
+        return [part1, part2, part3, part4].join(' ');
+      case CardBrand.americanExpress:
+        if (number.length != 15) {
+          return 'ERROR';
+        }
+        final part1 = number.substring(0, 4);
+        final part2 = number.substring(4, 10);
+        final part3 = number.substring(10);
+        return [part1, part2, part3].join(' ');
+      case CardBrand.dinersClub:
+        if (number.length != 14) {
+          return 'ERROR';
+        }
+        final part1 = number.substring(0, 4);
+        final part2 = number.substring(4, 10);
+        final part3 = number.substring(10);
+        return [part1, part2, part3].join(' ');
+      case CardBrand.other:
+        return 'ERROR';
+    }
+  }
 }
 
 enum CardBrand {
