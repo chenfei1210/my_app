@@ -349,27 +349,23 @@ class __$$CardItemImplCopyWithImpl<$Res>
 @JsonSerializable(fieldRename: FieldRename.snake)
 class _$CardItemImpl extends _CardItem {
   const _$CardItemImpl(
-      {this.cardName = '',
-      this.issuingCompany = '',
-      @IntToCardBrandConverter() this.brand = CardBrand.other,
-      @IntToCardClassificationConverter()
-      this.classification = CardClassification.other,
-      this.number = '',
-      @StringToEffectiveDateConverter()
-      this.effectiveDate = const EffectiveDate(month: '01', year: '01'),
-      this.cardHolder = '',
-      this.passcode = '',
-      this.cardVerificationValue = '',
-      @IntToCurrencyVolumeConverter()
-      this.availableShoppingLimit = const CurrencyVolume(0),
-      @IntToCurrencyVolumeConverter()
-      this.availableCashAdvanceLimit = const CurrencyVolume(0),
-      @IntToCurrencyVolumeConverter() this.annualFee = const CurrencyVolume(0),
-      this.repaymentAccount = '',
-      this.note = '',
-      this.managedSites = '',
-      this.account = '',
-      this.password = ''})
+      {required this.cardName,
+      required this.issuingCompany,
+      @IntToCardBrandConverter() required this.brand,
+      @IntToCardClassificationConverter() required this.classification,
+      required this.number,
+      @StringToEffectiveDateConverter() required this.effectiveDate,
+      required this.cardHolder,
+      required this.passcode,
+      required this.cardVerificationValue,
+      @IntToCurrencyVolumeConverter() required this.availableShoppingLimit,
+      @IntToCurrencyVolumeConverter() required this.availableCashAdvanceLimit,
+      @IntToCurrencyVolumeConverter() required this.annualFee,
+      required this.repaymentAccount,
+      required this.note,
+      required this.managedSites,
+      required this.account,
+      required this.password})
       : super._();
 
   factory _$CardItemImpl.fromJson(Map<String, dynamic> json) =>
@@ -377,93 +373,76 @@ class _$CardItemImpl extends _CardItem {
 
   /// カード名
   @override
-  @JsonKey()
   final String cardName;
 
   /// 発行企業
   @override
-  @JsonKey()
   final String issuingCompany;
 
   /// ブランド
   @override
-  @JsonKey()
   @IntToCardBrandConverter()
   final CardBrand brand;
 
   /// カード区分
   @override
-  @JsonKey()
   @IntToCardClassificationConverter()
   final CardClassification classification;
 
   /// カード番号
   @override
-  @JsonKey()
   final String number;
 
   /// 有効期限
   @override
-  @JsonKey()
   @StringToEffectiveDateConverter()
   final EffectiveDate effectiveDate;
 
   /// 名義人
   @override
-  @JsonKey()
   final String cardHolder;
 
   /// 4桁暗証番号
   @override
-  @JsonKey()
   final String passcode;
 
   /// カード裏番号
   @override
-  @JsonKey()
   final String cardVerificationValue;
 
   /// ショッピング利用可能枠
   @override
-  @JsonKey()
   @IntToCurrencyVolumeConverter()
   final CurrencyVolume availableShoppingLimit;
 
   /// キャッシング利用可能枠
   @override
-  @JsonKey()
   @IntToCurrencyVolumeConverter()
   final CurrencyVolume availableCashAdvanceLimit;
 
   /// 年会費
   @override
-  @JsonKey()
   @IntToCurrencyVolumeConverter()
   final CurrencyVolume annualFee;
 
   /// 返済口座
   @override
-  @JsonKey()
   final String repaymentAccount;
 
   /// 備考
   @override
-  @JsonKey()
   final String note;
 
   /// 管理サイト
   @override
-  @JsonKey()
   final String managedSites;
 
   /// アカウント
   @override
-  @JsonKey()
   final String account;
 
   /// パスワード
   @override
-  @JsonKey()
   final String password;
 
   @override
@@ -547,26 +526,27 @@ class _$CardItemImpl extends _CardItem {
 
 abstract class _CardItem extends CardItem {
   const factory _CardItem(
-      {final String cardName,
-      final String issuingCompany,
-      @IntToCardBrandConverter() final CardBrand brand,
+      {required final String cardName,
+      required final String issuingCompany,
+      @IntToCardBrandConverter() required final CardBrand brand,
       @IntToCardClassificationConverter()
-      final CardClassification classification,
-      final String number,
-      @StringToEffectiveDateConverter() final EffectiveDate effectiveDate,
-      final String cardHolder,
-      final String passcode,
-      final String cardVerificationValue,
+      required final CardClassification classification,
+      required final String number,
+      @StringToEffectiveDateConverter()
+      required final EffectiveDate effectiveDate,
+      required final String cardHolder,
+      required final String passcode,
+      required final String cardVerificationValue,
       @IntToCurrencyVolumeConverter()
-      final CurrencyVolume availableShoppingLimit,
+      required final CurrencyVolume availableShoppingLimit,
       @IntToCurrencyVolumeConverter()
-      final CurrencyVolume availableCashAdvanceLimit,
-      @IntToCurrencyVolumeConverter() final CurrencyVolume annualFee,
-      final String repaymentAccount,
-      final String note,
-      final String managedSites,
-      final String account,
-      final String password}) = _$CardItemImpl;
+      required final CurrencyVolume availableCashAdvanceLimit,
+      @IntToCurrencyVolumeConverter() required final CurrencyVolume annualFee,
+      required final String repaymentAccount,
+      required final String note,
+      required final String managedSites,
+      required final String account,
+      required final String password}) = _$CardItemImpl;
   const _CardItem._() : super._();
 
   factory _CardItem.fromJson(Map<String, dynamic> json) =

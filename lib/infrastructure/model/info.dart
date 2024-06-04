@@ -8,8 +8,7 @@ part 'info.g.dart';
 class Info with _$Info {
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory Info({
-    @Default(0) final int version,
-    @Default([]) final List<CardItem> card,
+    required final List<CardItem> card,
   }) = _Info;
 
   factory Info.fromJson(Map<String, dynamic> json) => _$InfoFromJson(json);

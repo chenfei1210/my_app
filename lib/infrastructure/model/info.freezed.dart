@@ -20,7 +20,6 @@ Info _$InfoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Info {
-  int get version => throw _privateConstructorUsedError;
   List<CardItem> get card => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -33,7 +32,7 @@ abstract class $InfoCopyWith<$Res> {
   factory $InfoCopyWith(Info value, $Res Function(Info) then) =
       _$InfoCopyWithImpl<$Res, Info>;
   @useResult
-  $Res call({int version, List<CardItem> card});
+  $Res call({List<CardItem> card});
 }
 
 /// @nodoc
@@ -49,14 +48,9 @@ class _$InfoCopyWithImpl<$Res, $Val extends Info>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? version = null,
     Object? card = null,
   }) {
     return _then(_value.copyWith(
-      version: null == version
-          ? _value.version
-          : version // ignore: cast_nullable_to_non_nullable
-              as int,
       card: null == card
           ? _value.card
           : card // ignore: cast_nullable_to_non_nullable
@@ -72,7 +66,7 @@ abstract class _$$InfoImplCopyWith<$Res> implements $InfoCopyWith<$Res> {
       __$$InfoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int version, List<CardItem> card});
+  $Res call({List<CardItem> card});
 }
 
 /// @nodoc
@@ -85,14 +79,9 @@ class __$$InfoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? version = null,
     Object? card = null,
   }) {
     return _then(_$InfoImpl(
-      version: null == version
-          ? _value.version
-          : version // ignore: cast_nullable_to_non_nullable
-              as int,
       card: null == card
           ? _value._card
           : card // ignore: cast_nullable_to_non_nullable
@@ -105,18 +94,13 @@ class __$$InfoImplCopyWithImpl<$Res>
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class _$InfoImpl implements _Info {
-  const _$InfoImpl({this.version = 0, final List<CardItem> card = const []})
-      : _card = card;
+  const _$InfoImpl({required final List<CardItem> card}) : _card = card;
 
   factory _$InfoImpl.fromJson(Map<String, dynamic> json) =>
       _$$InfoImplFromJson(json);
 
-  @override
-  @JsonKey()
-  final int version;
   final List<CardItem> _card;
   @override
-  @JsonKey()
   List<CardItem> get card {
     if (_card is EqualUnmodifiableListView) return _card;
     // ignore: implicit_dynamic_type
@@ -125,7 +109,7 @@ class _$InfoImpl implements _Info {
 
   @override
   String toString() {
-    return 'Info(version: $version, card: $card)';
+    return 'Info(card: $card)';
   }
 
   @override
@@ -133,14 +117,13 @@ class _$InfoImpl implements _Info {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InfoImpl &&
-            (identical(other.version, version) || other.version == version) &&
             const DeepCollectionEquality().equals(other._card, _card));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, version, const DeepCollectionEquality().hash(_card));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_card));
 
   @JsonKey(ignore: true)
   @override
@@ -157,13 +140,10 @@ class _$InfoImpl implements _Info {
 }
 
 abstract class _Info implements Info {
-  const factory _Info({final int version, final List<CardItem> card}) =
-      _$InfoImpl;
+  const factory _Info({required final List<CardItem> card}) = _$InfoImpl;
 
   factory _Info.fromJson(Map<String, dynamic> json) = _$InfoImpl.fromJson;
 
-  @override
-  int get version;
   @override
   List<CardItem> get card;
   @override

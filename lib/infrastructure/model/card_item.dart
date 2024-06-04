@@ -13,65 +13,59 @@ class CardItem with _$CardItem {
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory CardItem({
     /// カード名
-    @Default('') final String cardName,
+    required final String cardName,
 
     /// 発行企業
-    @Default('') final String issuingCompany,
+    required final String issuingCompany,
 
     /// ブランド
-    @Default(CardBrand.other) @IntToCardBrandConverter() final CardBrand brand,
+    @IntToCardBrandConverter() required final CardBrand brand,
 
     /// カード区分
-    @Default(CardClassification.other)
     @IntToCardClassificationConverter()
-    final CardClassification classification,
+    required final CardClassification classification,
 
     /// カード番号
-    @Default('') final String number,
+    required final String number,
 
     /// 有効期限
     @StringToEffectiveDateConverter()
-    @Default(EffectiveDate(month: '01', year: '01'))
-    final EffectiveDate effectiveDate,
+    required final EffectiveDate effectiveDate,
 
     /// 名義人
-    @Default('') final String cardHolder,
+    required final String cardHolder,
 
     /// 4桁暗証番号
-    @Default('') final String passcode,
+    required final String passcode,
 
     /// カード裏番号
-    @Default('') final String cardVerificationValue,
+    required final String cardVerificationValue,
 
     /// ショッピング利用可能枠
-    @Default(CurrencyVolume(0))
     @IntToCurrencyVolumeConverter()
-    final CurrencyVolume availableShoppingLimit,
+    required final CurrencyVolume availableShoppingLimit,
 
     /// キャッシング利用可能枠
-    @Default(CurrencyVolume(0))
     @IntToCurrencyVolumeConverter()
-    final CurrencyVolume availableCashAdvanceLimit,
+    required final CurrencyVolume availableCashAdvanceLimit,
 
     /// 年会費
-    @Default(CurrencyVolume(0))
-    @IntToCurrencyVolumeConverter()
-    final CurrencyVolume annualFee,
+    @IntToCurrencyVolumeConverter() required final CurrencyVolume annualFee,
 
     /// 返済口座
-    @Default('') final String repaymentAccount,
+    required final String repaymentAccount,
 
     /// 備考
-    @Default('') final String note,
+    required final String note,
 
     /// 管理サイト
-    @Default('') final String managedSites,
+    required final String managedSites,
 
     /// アカウント
-    @Default('') final String account,
+    required final String account,
 
     /// パスワード
-    @Default('') final String password,
+    required final String password,
   }) = _CardItem;
 
   factory CardItem.fromJson(Map<String, dynamic> json) =>

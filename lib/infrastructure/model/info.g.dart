@@ -7,15 +7,12 @@ part of 'info.dart';
 // **************************************************************************
 
 _$InfoImpl _$$InfoImplFromJson(Map<String, dynamic> json) => _$InfoImpl(
-      version: json['version'] as int? ?? 0,
-      card: (json['card'] as List<dynamic>?)
-              ?.map((e) => CardItem.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          const [],
+      card: (json['card'] as List<dynamic>)
+          .map((e) => CardItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$InfoImplToJson(_$InfoImpl instance) =>
     <String, dynamic>{
-      'version': instance.version,
       'card': instance.card,
     };
