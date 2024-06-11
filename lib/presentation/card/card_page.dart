@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_app/domain/card/card_notifier.dart';
 import 'package:my_app/domain/card/card_state.dart';
 import 'package:my_app/presentation/card/card_view/card_widget.dart';
+import 'package:my_app/presentation/card/short_filter_menubar/short_filter_menubar.dart';
 import 'package:my_app/presentation/component/view/loading_view.dart';
 
 class CardPage extends ConsumerStatefulWidget {
@@ -69,6 +70,7 @@ class _CardPageState extends ConsumerState<CardPage> {
                   FilteringTextInputFormatter.digitsOnly
                 ],
               ),
+              const ShortFilterMenubar(),
               const SizedBox(
                 height: 32,
               ),

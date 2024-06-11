@@ -7,7 +7,20 @@ part 'card_state.freezed.dart';
 @freezed
 class CardState with _$CardState {
   const factory CardState({
-    @Default('') String enteredSearchKeyword,
     @Default(AsyncValue.loading()) AsyncValue<List<CardItem>> cardItemList,
+    @Default('') String enteredSearchKeyword,
+    required Set<CardBrandFilterItem> cardBrandFilterSet,
   }) = _CardState;
+  const CardState._();
+
+  bool get isCardBrandFilterSelectedAll =>
+      cardBrandFilterSet.every((element) => element.isSelected);
+}
+
+@freezed
+class CardBrandFilterItem with _$CardBrandFilterItem {
+  const factory CardBrandFilterItem({
+    required CardBrand cardBrand,
+    @Default(false) bool isSelected,
+  }) = _CardBrandFilterItem;
 }

@@ -16,8 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CardState {
-  String get enteredSearchKeyword => throw _privateConstructorUsedError;
   AsyncValue<List<CardItem>> get cardItemList =>
+      throw _privateConstructorUsedError;
+  String get enteredSearchKeyword => throw _privateConstructorUsedError;
+  Set<CardBrandFilterItem> get cardBrandFilterSet =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,7 +33,9 @@ abstract class $CardStateCopyWith<$Res> {
       _$CardStateCopyWithImpl<$Res, CardState>;
   @useResult
   $Res call(
-      {String enteredSearchKeyword, AsyncValue<List<CardItem>> cardItemList});
+      {AsyncValue<List<CardItem>> cardItemList,
+      String enteredSearchKeyword,
+      Set<CardBrandFilterItem> cardBrandFilterSet});
 }
 
 /// @nodoc
@@ -47,18 +51,23 @@ class _$CardStateCopyWithImpl<$Res, $Val extends CardState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? enteredSearchKeyword = null,
     Object? cardItemList = null,
+    Object? enteredSearchKeyword = null,
+    Object? cardBrandFilterSet = null,
   }) {
     return _then(_value.copyWith(
-      enteredSearchKeyword: null == enteredSearchKeyword
-          ? _value.enteredSearchKeyword
-          : enteredSearchKeyword // ignore: cast_nullable_to_non_nullable
-              as String,
       cardItemList: null == cardItemList
           ? _value.cardItemList
           : cardItemList // ignore: cast_nullable_to_non_nullable
               as AsyncValue<List<CardItem>>,
+      enteredSearchKeyword: null == enteredSearchKeyword
+          ? _value.enteredSearchKeyword
+          : enteredSearchKeyword // ignore: cast_nullable_to_non_nullable
+              as String,
+      cardBrandFilterSet: null == cardBrandFilterSet
+          ? _value.cardBrandFilterSet
+          : cardBrandFilterSet // ignore: cast_nullable_to_non_nullable
+              as Set<CardBrandFilterItem>,
     ) as $Val);
   }
 }
@@ -72,7 +81,9 @@ abstract class _$$CardStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String enteredSearchKeyword, AsyncValue<List<CardItem>> cardItemList});
+      {AsyncValue<List<CardItem>> cardItemList,
+      String enteredSearchKeyword,
+      Set<CardBrandFilterItem> cardBrandFilterSet});
 }
 
 /// @nodoc
@@ -86,39 +97,55 @@ class __$$CardStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? enteredSearchKeyword = null,
     Object? cardItemList = null,
+    Object? enteredSearchKeyword = null,
+    Object? cardBrandFilterSet = null,
   }) {
     return _then(_$CardStateImpl(
-      enteredSearchKeyword: null == enteredSearchKeyword
-          ? _value.enteredSearchKeyword
-          : enteredSearchKeyword // ignore: cast_nullable_to_non_nullable
-              as String,
       cardItemList: null == cardItemList
           ? _value.cardItemList
           : cardItemList // ignore: cast_nullable_to_non_nullable
               as AsyncValue<List<CardItem>>,
+      enteredSearchKeyword: null == enteredSearchKeyword
+          ? _value.enteredSearchKeyword
+          : enteredSearchKeyword // ignore: cast_nullable_to_non_nullable
+              as String,
+      cardBrandFilterSet: null == cardBrandFilterSet
+          ? _value._cardBrandFilterSet
+          : cardBrandFilterSet // ignore: cast_nullable_to_non_nullable
+              as Set<CardBrandFilterItem>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$CardStateImpl implements _CardState {
+class _$CardStateImpl extends _CardState {
   const _$CardStateImpl(
-      {this.enteredSearchKeyword = '',
-      this.cardItemList = const AsyncValue.loading()});
+      {this.cardItemList = const AsyncValue.loading(),
+      this.enteredSearchKeyword = '',
+      required final Set<CardBrandFilterItem> cardBrandFilterSet})
+      : _cardBrandFilterSet = cardBrandFilterSet,
+        super._();
 
-  @override
-  @JsonKey()
-  final String enteredSearchKeyword;
   @override
   @JsonKey()
   final AsyncValue<List<CardItem>> cardItemList;
+  @override
+  @JsonKey()
+  final String enteredSearchKeyword;
+  final Set<CardBrandFilterItem> _cardBrandFilterSet;
+  @override
+  Set<CardBrandFilterItem> get cardBrandFilterSet {
+    if (_cardBrandFilterSet is EqualUnmodifiableSetView)
+      return _cardBrandFilterSet;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableSetView(_cardBrandFilterSet);
+  }
 
   @override
   String toString() {
-    return 'CardState(enteredSearchKeyword: $enteredSearchKeyword, cardItemList: $cardItemList)';
+    return 'CardState(cardItemList: $cardItemList, enteredSearchKeyword: $enteredSearchKeyword, cardBrandFilterSet: $cardBrandFilterSet)';
   }
 
   @override
@@ -126,15 +153,20 @@ class _$CardStateImpl implements _CardState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CardStateImpl &&
+            (identical(other.cardItemList, cardItemList) ||
+                other.cardItemList == cardItemList) &&
             (identical(other.enteredSearchKeyword, enteredSearchKeyword) ||
                 other.enteredSearchKeyword == enteredSearchKeyword) &&
-            (identical(other.cardItemList, cardItemList) ||
-                other.cardItemList == cardItemList));
+            const DeepCollectionEquality()
+                .equals(other._cardBrandFilterSet, _cardBrandFilterSet));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, enteredSearchKeyword, cardItemList);
+  int get hashCode => Object.hash(
+      runtimeType,
+      cardItemList,
+      enteredSearchKeyword,
+      const DeepCollectionEquality().hash(_cardBrandFilterSet));
 
   @JsonKey(ignore: true)
   @override
@@ -143,17 +175,162 @@ class _$CardStateImpl implements _CardState {
       __$$CardStateImplCopyWithImpl<_$CardStateImpl>(this, _$identity);
 }
 
-abstract class _CardState implements CardState {
+abstract class _CardState extends CardState {
   const factory _CardState(
-      {final String enteredSearchKeyword,
-      final AsyncValue<List<CardItem>> cardItemList}) = _$CardStateImpl;
+          {final AsyncValue<List<CardItem>> cardItemList,
+          final String enteredSearchKeyword,
+          required final Set<CardBrandFilterItem> cardBrandFilterSet}) =
+      _$CardStateImpl;
+  const _CardState._() : super._();
 
-  @override
-  String get enteredSearchKeyword;
   @override
   AsyncValue<List<CardItem>> get cardItemList;
   @override
+  String get enteredSearchKeyword;
+  @override
+  Set<CardBrandFilterItem> get cardBrandFilterSet;
+  @override
   @JsonKey(ignore: true)
   _$$CardStateImplCopyWith<_$CardStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$CardBrandFilterItem {
+  CardBrand get cardBrand => throw _privateConstructorUsedError;
+  bool get isSelected => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $CardBrandFilterItemCopyWith<CardBrandFilterItem> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CardBrandFilterItemCopyWith<$Res> {
+  factory $CardBrandFilterItemCopyWith(
+          CardBrandFilterItem value, $Res Function(CardBrandFilterItem) then) =
+      _$CardBrandFilterItemCopyWithImpl<$Res, CardBrandFilterItem>;
+  @useResult
+  $Res call({CardBrand cardBrand, bool isSelected});
+}
+
+/// @nodoc
+class _$CardBrandFilterItemCopyWithImpl<$Res, $Val extends CardBrandFilterItem>
+    implements $CardBrandFilterItemCopyWith<$Res> {
+  _$CardBrandFilterItemCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? cardBrand = null,
+    Object? isSelected = null,
+  }) {
+    return _then(_value.copyWith(
+      cardBrand: null == cardBrand
+          ? _value.cardBrand
+          : cardBrand // ignore: cast_nullable_to_non_nullable
+              as CardBrand,
+      isSelected: null == isSelected
+          ? _value.isSelected
+          : isSelected // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$CardBrandFilterItemImplCopyWith<$Res>
+    implements $CardBrandFilterItemCopyWith<$Res> {
+  factory _$$CardBrandFilterItemImplCopyWith(_$CardBrandFilterItemImpl value,
+          $Res Function(_$CardBrandFilterItemImpl) then) =
+      __$$CardBrandFilterItemImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({CardBrand cardBrand, bool isSelected});
+}
+
+/// @nodoc
+class __$$CardBrandFilterItemImplCopyWithImpl<$Res>
+    extends _$CardBrandFilterItemCopyWithImpl<$Res, _$CardBrandFilterItemImpl>
+    implements _$$CardBrandFilterItemImplCopyWith<$Res> {
+  __$$CardBrandFilterItemImplCopyWithImpl(_$CardBrandFilterItemImpl _value,
+      $Res Function(_$CardBrandFilterItemImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? cardBrand = null,
+    Object? isSelected = null,
+  }) {
+    return _then(_$CardBrandFilterItemImpl(
+      cardBrand: null == cardBrand
+          ? _value.cardBrand
+          : cardBrand // ignore: cast_nullable_to_non_nullable
+              as CardBrand,
+      isSelected: null == isSelected
+          ? _value.isSelected
+          : isSelected // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CardBrandFilterItemImpl implements _CardBrandFilterItem {
+  const _$CardBrandFilterItemImpl(
+      {required this.cardBrand, this.isSelected = false});
+
+  @override
+  final CardBrand cardBrand;
+  @override
+  @JsonKey()
+  final bool isSelected;
+
+  @override
+  String toString() {
+    return 'CardBrandFilterItem(cardBrand: $cardBrand, isSelected: $isSelected)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CardBrandFilterItemImpl &&
+            (identical(other.cardBrand, cardBrand) ||
+                other.cardBrand == cardBrand) &&
+            (identical(other.isSelected, isSelected) ||
+                other.isSelected == isSelected));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, cardBrand, isSelected);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CardBrandFilterItemImplCopyWith<_$CardBrandFilterItemImpl> get copyWith =>
+      __$$CardBrandFilterItemImplCopyWithImpl<_$CardBrandFilterItemImpl>(
+          this, _$identity);
+}
+
+abstract class _CardBrandFilterItem implements CardBrandFilterItem {
+  const factory _CardBrandFilterItem(
+      {required final CardBrand cardBrand,
+      final bool isSelected}) = _$CardBrandFilterItemImpl;
+
+  @override
+  CardBrand get cardBrand;
+  @override
+  bool get isSelected;
+  @override
+  @JsonKey(ignore: true)
+  _$$CardBrandFilterItemImplCopyWith<_$CardBrandFilterItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
